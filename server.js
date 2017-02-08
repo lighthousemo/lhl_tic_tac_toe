@@ -21,12 +21,12 @@ socket_server.on('connection', function connection(pipeline) {
   // at the other end of this pipeline.
   pipeline.on('message', function(data) {
     // 'data' is just a JSON encoded string. We need to decode it.
-		var message = JSON.parse(data);
+    var message = JSON.parse(data);
     // Handle the clicked_tile message.
     if(message.type === "clicked_tile") {
       // Attach the color of the sender of the message before broadcasting
       message.color = pipeline.color
-			// Send a message to all connected clients to announce the click
+      // Send a message to all connected clients to announce the click
       broadcast(message);
     }
   })

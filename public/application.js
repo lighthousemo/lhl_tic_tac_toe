@@ -21,19 +21,19 @@ socket.onmessage = (event) => {
     window.color = message.color;
   }
   if(message.type === "clicked_tile") {
-		// Set the color on the tile
+    // Set the color on the tile
     $("#" + message.tile).css({"background-color": message.color});
   }
 }
 
 $(() => {
   // Set up a click listener for the tiles.
-	$(".tile").on("click", (e) => {
+  $(".tile").on("click", (e) => {
     // When the user clicked a tile, send out a 'clicked_tile' message
     // to the server. the 'tile' value will be the id of the tile
     // that was clicked. Ex: "r1c2"
-		socket.send(JSON.stringify({type: "clicked_tile", tile: e.target.id}));
-	})
+    socket.send(JSON.stringify({type: "clicked_tile", tile: e.target.id}));
+  })
 })
 
 
